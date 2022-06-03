@@ -214,6 +214,9 @@ controller.player2.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Press
         `, Godzilla, -50, 0)
     pause(300)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite3, location2) {
+    game.over(false, effects.splatter)
+})
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     Godzilla,
@@ -422,6 +425,90 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         `, Godzilla, -50, 0)
     pause(300)
 })
+function Lvlswitchercoinsetter () {
+    Godzilla.ay = 0
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy, effects.spray, 500)
+    Godzilla.setStayInScreen(true)
+    tiles.setCurrentTilemap(tilemap`level22`)
+    tiles.placeOnRandomTile(Godzilla, assets.tile`myTile23`)
+    tiles.placeOnRandomTile(Godzilla_2, assets.tile`myTile23`)
+    Godzilla.ay = 100
+    pause(1000)
+    Godzilla.ay = 300
+    for (let index = 0; index < 150; index++) {
+        Coin = sprites.create(img`
+            . . b b b b . . 
+            . b 5 5 5 5 b . 
+            b 5 d 3 3 d 5 b 
+            b 5 3 5 5 1 5 b 
+            c 5 3 5 5 1 d c 
+            c d d 1 1 d d c 
+            . f d d d d f . 
+            . . f f f f . . 
+            `, SpriteKind.Food)
+        tiles.placeOnRandomTile(Coin, assets.tile`myTile25`)
+        animation.runImageAnimation(
+        Coin,
+        [img`
+            . . b b b b . . 
+            . b 5 5 5 5 b . 
+            b 5 d 3 3 d 5 b 
+            b 5 3 5 5 1 5 b 
+            c 5 3 5 5 1 d c 
+            c d d 1 1 d d c 
+            . f d d d d f . 
+            . . f f f f . . 
+            `,img`
+            . . b b b . . . 
+            . b 5 5 5 b . . 
+            b 5 d 3 d 5 b . 
+            b 5 3 5 1 5 b . 
+            c 5 3 5 1 d c . 
+            c 5 d 1 d d c . 
+            . f d d d f . . 
+            . . f f f . . . 
+            `,img`
+            . . . b b . . . 
+            . . b 5 5 b . . 
+            . b 5 d 1 5 b . 
+            . b 5 3 1 5 b . 
+            . c 5 3 1 d c . 
+            . c 5 1 d d c . 
+            . . f d d f . . 
+            . . . f f . . . 
+            `,img`
+            . . . b b . . . 
+            . . b 5 5 b . . 
+            . . b 1 1 b . . 
+            . . b 5 5 b . . 
+            . . b d d b . . 
+            . . c d d c . . 
+            . . c 3 3 c . . 
+            . . . f f . . . 
+            `,img`
+            . . . b b . . . 
+            . . b 5 5 b . . 
+            . b 5 1 d 5 b . 
+            . b 5 1 3 5 b . 
+            . c d 1 3 5 c . 
+            . c d d 1 5 c . 
+            . . f d d f . . 
+            . . . f f . . . 
+            `,img`
+            . . . b b b . . 
+            . . b 5 5 5 b . 
+            . b 5 d 3 d 5 b 
+            . b 5 1 5 3 5 b 
+            . c d 1 5 3 5 c 
+            . c d d 1 d 5 c 
+            . . f d d d f . 
+            . . . f f f . . 
+            `],
+        100,
+        true
+        )
+    }
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     Godzilla,
@@ -838,94 +925,21 @@ controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Press
         `, Godzilla, 50, 16)
     pause(300)
 })
-function Lvlswitchercoinsetter () {
-    Godzilla.ay = 0
-    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy, effects.spray, 500)
-    Godzilla.setStayInScreen(true)
-    tiles.setCurrentTilemap(tilemap`level22`)
-    tiles.placeOnRandomTile(Godzilla, assets.tile`myTile23`)
-    tiles.placeOnRandomTile(Godzilla_2, assets.tile`myTile23`)
-    Godzilla.ay = 100
-    pause(1000)
-    Godzilla.ay = 300
-    for (let index = 0; index < 150; index++) {
-        Coin = sprites.create(img`
-            . . b b b b . . 
-            . b 5 5 5 5 b . 
-            b 5 d 3 3 d 5 b 
-            b 5 3 5 5 1 5 b 
-            c 5 3 5 5 1 d c 
-            c d d 1 1 d d c 
-            . f d d d d f . 
-            . . f f f f . . 
-            `, SpriteKind.Food)
-        tiles.placeOnRandomTile(Coin, assets.tile`myTile25`)
-        animation.runImageAnimation(
-        Coin,
-        [img`
-            . . b b b b . . 
-            . b 5 5 5 5 b . 
-            b 5 d 3 3 d 5 b 
-            b 5 3 5 5 1 5 b 
-            c 5 3 5 5 1 d c 
-            c d d 1 1 d d c 
-            . f d d d d f . 
-            . . f f f f . . 
-            `,img`
-            . . b b b . . . 
-            . b 5 5 5 b . . 
-            b 5 d 3 d 5 b . 
-            b 5 3 5 1 5 b . 
-            c 5 3 5 1 d c . 
-            c 5 d 1 d d c . 
-            . f d d d f . . 
-            . . f f f . . . 
-            `,img`
-            . . . b b . . . 
-            . . b 5 5 b . . 
-            . b 5 d 1 5 b . 
-            . b 5 3 1 5 b . 
-            . c 5 3 1 d c . 
-            . c 5 1 d d c . 
-            . . f d d f . . 
-            . . . f f . . . 
-            `,img`
-            . . . b b . . . 
-            . . b 5 5 b . . 
-            . . b 1 1 b . . 
-            . . b 5 5 b . . 
-            . . b d d b . . 
-            . . c d d c . . 
-            . . c 3 3 c . . 
-            . . . f f . . . 
-            `,img`
-            . . . b b . . . 
-            . . b 5 5 b . . 
-            . b 5 1 d 5 b . 
-            . b 5 1 3 5 b . 
-            . c d 1 3 5 c . 
-            . c d d 1 5 c . 
-            . . f d d f . . 
-            . . . f f . . . 
-            `,img`
-            . . . b b b . . 
-            . . b 5 5 5 b . 
-            . b 5 d 3 d 5 b 
-            . b 5 1 5 3 5 b 
-            . c d 1 5 3 5 c 
-            . c d d 1 d 5 c 
-            . . f d d d f . 
-            . . . f f f . . 
-            `],
-        100,
-        true
-        )
-    }
-}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite2, otherSprite) {
+    music.baDing.play()
+    Point += 1
+    otherSprite.destroy()
+})
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
     if (Godzilla_2.vy == 0) {
         Godzilla_2.vy = -150
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile26`, function (sprite6, location4) {
+    game.over(false, effects.splatter)
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite5, otherSprite2) {
+    otherSprite2.destroy()
 })
 function What_to_do_on_start () {
     Point = 0
@@ -1080,25 +1094,11 @@ function What_to_do_on_start () {
         )
     }
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
-    music.baDing.play()
-    Point += 1
-    otherSprite.destroy()
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite, location) {
-    game.over(false, effects.splatter)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile27`, function (sprite, location) {
-    game.over(true, effects.smiles)
-})
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy()
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile26`, function (sprite, location) {
-    game.over(false, effects.splatter)
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite7, otherSprite3) {
     game.over(false, effects.blizzard)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile27`, function (sprite4, location3) {
+    game.over(true, effects.smiles)
 })
 let mushroom: Sprite = null
 let textSprite: TextSprite = null
@@ -1182,6 +1182,166 @@ Godzilla_2,
 100,
 false
 )
+forever(function () {
+    if (controller.right.isPressed()) {
+        animation.runImageAnimation(
+        Godzilla,
+        [img`
+            ........................
+            ........................
+            ...........cc...........
+            ...........cccc.........
+            .......cc...ccccccc.....
+            .......cccccc555555cc...
+            ........ccb5555555555c..
+            .....cc..b555555555555c.
+            .....cccb555555ff155555c
+            .....ccb55555555ff55d55c
+            ......b5555555555555555c
+            ...c..b555d55555bb13bbc.
+            ...cccd55ddddd55bb3335c.
+            ....cbdddddddddd55b335c.
+            ..cccdddddb55bdddd5555c.
+            ..cccdddddb555bbbbcccc..
+            ...ccddddddb5555cbcdc...
+            ccccbdddddddcb55cbcc....
+            cddddddddd55dbccbbc.....
+            cbdddddddd555dbbbcc.....
+            .ccbdddbbdd555bbcdbcc...
+            ...cccbbbbdd55ccdddbc...
+            ......cccbdddbccccccc...
+            ........cdd555dc........
+            `,img`
+            ........................
+            ........................
+            ...........ccc..........
+            ...........cccc.........
+            .......ccc..ccccccc.....
+            .......cccccc555555cc...
+            ........ccb5555555555c..
+            .....cc..b555555555555c.
+            .....cccb555555ff155555c
+            ......cb55555555ff55d55c
+            ......b5555555555555555c
+            ...cc.b555dd5555bb13bbc.
+            ...cccd55ddddd555b3335c.
+            .....bdddddddddd55b335c.
+            ..cccdddddb55bbddd5555c.
+            ..cccdddddb555bbbbcccc..
+            ...ccddddddb5555cbcdc...
+            ccccbdddddd5cb55cbcc....
+            cddddddddd5555ccbbc.....
+            .cddddddbdd555bbbcc.....
+            ..ccdddbbbdd55cbcdc.....
+            ....ccbbcbddddccdddcc...
+            ......cccdd555dcccccc...
+            ........cccccccc........
+            `,img`
+            ........................
+            ............cc..........
+            ............ccc.........
+            ........ccc.ccccccc.....
+            ........ccccc555555cc...
+            ........ccb5555555555c..
+            .....ccc.b55555ff15555c.
+            .....cccb5555555ff55555c
+            ......cb555555555555d55c
+            ....c.b555555555bb55555c
+            ....ccb555ddd5555b13bbc.
+            ....ccd55ddddd555b3335c.
+            .....cdd5ddddddd55b335c.
+            ...c.bddddb555bbbd555c..
+            ...ccdddddbb55555bccc...
+            ...ccdddddddcc555bcc....
+            ...ccddddddddbcccbcccc..
+            .ccbddddddd55dbbbbc55c..
+            ccddddddddd555dbbcc5c...
+            cddddddbbbdd555bbccc....
+            .ccddddbbbbdd55bcc......
+            ...cccbbbbbdddbcddcc....
+            .....cccccdd555dcccc....
+            ..........cccccc........
+            `,img`
+            ........................
+            ............cc..........
+            ............ccc.........
+            ........ccc.ccccccc.....
+            ........ccccc555555cc...
+            ........ccb5555555555c..
+            .....ccc.b55555ff15555c.
+            .....cccb5555555ff55555c
+            ......cb555555555555d55c
+            ....c.b555555555bb55555c
+            ....ccb555ddd5555b13bbc.
+            ....ccd55ddddd555b3335c.
+            .....cdd5ddddddd55b335c.
+            ...c.bddddb555bbbd555c..
+            ...ccdddddbb55555bccc...
+            ...ccdddddddcc555bcc....
+            .ccccdddddddddcccbcccc..
+            .cdcdddddddd55dbbbc55c..
+            .cdddddddddd555dccc5c...
+            .cbddddbbbbdd5d555cc....
+            ..cbdddbbbbbdd5555......
+            ...cccbbbbbbd5555c......
+            .....cccccccc555c.......
+            .............ccc........
+            `,img`
+            ........................
+            ............cc..........
+            ............ccc.........
+            ........ccc.ccccccc.....
+            ........ccccc555555cc...
+            ........ccb5555555555c..
+            .....ccc.b55555ff15555c.
+            .....cccb5555555ff55555c
+            ......cb555555555555d55c
+            ....c.b555555555bb55555c
+            ....ccb555ddd5555b13bbc.
+            ....ccd55ddddd555b3335c.
+            .....cdd5ddddddd55b335c.
+            ...c.bddddb555bbbd555c..
+            ...ccdddddb555555bccc...
+            ..cccddddddcc5555bcc....
+            .cdccddddddddbcccbcccc..
+            .cddbdddddddddbbbbc55c..
+            .cdddddddddd55dbbbc5c...
+            .cbddddbbbbd55ddbccc....
+            ..cbdddbbbbd555dccc.....
+            ...cccbbbbbbddd555c.....
+            .....ccccccbd55555c.....
+            ...........cc5555c......
+            `,img`
+            ........................
+            ............cc..........
+            ............ccc.........
+            ........cc..ccccccc.....
+            ........ccccc555555cc...
+            ........ccb5555555555c..
+            .....cc..b555555555555c.
+            .....cccb555555ff155555c
+            ......cb55555555ff55d55c
+            ......b5555555555555555c
+            ...cc.b555dd5555bb13bbc.
+            ...cccd55ddddd555b3335c.
+            ....ccdd5ddddddd55b335c.
+            .....bddddb55bdddd5555c.
+            ..cccdddddb55bbbbbcccc..
+            .ccccddddddb5555cbcccc..
+            .cdccdddddddc555cbc55c..
+            .cdddddddddddcccbbc5c...
+            .cbddddddd55dbbbbccc....
+            .ccbdddddd555dbbbcbc....
+            ..cccddbbbd555bbccc.....
+            ....ccbbbbbd555cc.......
+            ......ccccbddddbc.......
+            ..........cd5555dc......
+            `],
+        500,
+        false
+        )
+    }
+})
 forever(function () {
     textSprite.setText(convertToText(Point))
     textSprite.setPosition(scene.cameraProperty(CameraProperty.X) + 20, scene.cameraProperty(CameraProperty.Y) + 20)
@@ -1340,166 +1500,6 @@ forever(function () {
             .......cc555dbbbbbcc....
             .......cbddddbcccc......
             ......cd5555dc..........
-            `],
-        500,
-        false
-        )
-    }
-})
-forever(function () {
-    if (controller.right.isPressed()) {
-        animation.runImageAnimation(
-        Godzilla,
-        [img`
-            ........................
-            ........................
-            ...........cc...........
-            ...........cccc.........
-            .......cc...ccccccc.....
-            .......cccccc555555cc...
-            ........ccb5555555555c..
-            .....cc..b555555555555c.
-            .....cccb555555ff155555c
-            .....ccb55555555ff55d55c
-            ......b5555555555555555c
-            ...c..b555d55555bb13bbc.
-            ...cccd55ddddd55bb3335c.
-            ....cbdddddddddd55b335c.
-            ..cccdddddb55bdddd5555c.
-            ..cccdddddb555bbbbcccc..
-            ...ccddddddb5555cbcdc...
-            ccccbdddddddcb55cbcc....
-            cddddddddd55dbccbbc.....
-            cbdddddddd555dbbbcc.....
-            .ccbdddbbdd555bbcdbcc...
-            ...cccbbbbdd55ccdddbc...
-            ......cccbdddbccccccc...
-            ........cdd555dc........
-            `,img`
-            ........................
-            ........................
-            ...........ccc..........
-            ...........cccc.........
-            .......ccc..ccccccc.....
-            .......cccccc555555cc...
-            ........ccb5555555555c..
-            .....cc..b555555555555c.
-            .....cccb555555ff155555c
-            ......cb55555555ff55d55c
-            ......b5555555555555555c
-            ...cc.b555dd5555bb13bbc.
-            ...cccd55ddddd555b3335c.
-            .....bdddddddddd55b335c.
-            ..cccdddddb55bbddd5555c.
-            ..cccdddddb555bbbbcccc..
-            ...ccddddddb5555cbcdc...
-            ccccbdddddd5cb55cbcc....
-            cddddddddd5555ccbbc.....
-            .cddddddbdd555bbbcc.....
-            ..ccdddbbbdd55cbcdc.....
-            ....ccbbcbddddccdddcc...
-            ......cccdd555dcccccc...
-            ........cccccccc........
-            `,img`
-            ........................
-            ............cc..........
-            ............ccc.........
-            ........ccc.ccccccc.....
-            ........ccccc555555cc...
-            ........ccb5555555555c..
-            .....ccc.b55555ff15555c.
-            .....cccb5555555ff55555c
-            ......cb555555555555d55c
-            ....c.b555555555bb55555c
-            ....ccb555ddd5555b13bbc.
-            ....ccd55ddddd555b3335c.
-            .....cdd5ddddddd55b335c.
-            ...c.bddddb555bbbd555c..
-            ...ccdddddbb55555bccc...
-            ...ccdddddddcc555bcc....
-            ...ccddddddddbcccbcccc..
-            .ccbddddddd55dbbbbc55c..
-            ccddddddddd555dbbcc5c...
-            cddddddbbbdd555bbccc....
-            .ccddddbbbbdd55bcc......
-            ...cccbbbbbdddbcddcc....
-            .....cccccdd555dcccc....
-            ..........cccccc........
-            `,img`
-            ........................
-            ............cc..........
-            ............ccc.........
-            ........ccc.ccccccc.....
-            ........ccccc555555cc...
-            ........ccb5555555555c..
-            .....ccc.b55555ff15555c.
-            .....cccb5555555ff55555c
-            ......cb555555555555d55c
-            ....c.b555555555bb55555c
-            ....ccb555ddd5555b13bbc.
-            ....ccd55ddddd555b3335c.
-            .....cdd5ddddddd55b335c.
-            ...c.bddddb555bbbd555c..
-            ...ccdddddbb55555bccc...
-            ...ccdddddddcc555bcc....
-            .ccccdddddddddcccbcccc..
-            .cdcdddddddd55dbbbc55c..
-            .cdddddddddd555dccc5c...
-            .cbddddbbbbdd5d555cc....
-            ..cbdddbbbbbdd5555......
-            ...cccbbbbbbd5555c......
-            .....cccccccc555c.......
-            .............ccc........
-            `,img`
-            ........................
-            ............cc..........
-            ............ccc.........
-            ........ccc.ccccccc.....
-            ........ccccc555555cc...
-            ........ccb5555555555c..
-            .....ccc.b55555ff15555c.
-            .....cccb5555555ff55555c
-            ......cb555555555555d55c
-            ....c.b555555555bb55555c
-            ....ccb555ddd5555b13bbc.
-            ....ccd55ddddd555b3335c.
-            .....cdd5ddddddd55b335c.
-            ...c.bddddb555bbbd555c..
-            ...ccdddddb555555bccc...
-            ..cccddddddcc5555bcc....
-            .cdccddddddddbcccbcccc..
-            .cddbdddddddddbbbbc55c..
-            .cdddddddddd55dbbbc5c...
-            .cbddddbbbbd55ddbccc....
-            ..cbdddbbbbd555dccc.....
-            ...cccbbbbbbddd555c.....
-            .....ccccccbd55555c.....
-            ...........cc5555c......
-            `,img`
-            ........................
-            ............cc..........
-            ............ccc.........
-            ........cc..ccccccc.....
-            ........ccccc555555cc...
-            ........ccb5555555555c..
-            .....cc..b555555555555c.
-            .....cccb555555ff155555c
-            ......cb55555555ff55d55c
-            ......b5555555555555555c
-            ...cc.b555dd5555bb13bbc.
-            ...cccd55ddddd555b3335c.
-            ....ccdd5ddddddd55b335c.
-            .....bddddb55bdddd5555c.
-            ..cccdddddb55bbbbbcccc..
-            .ccccddddddb5555cbcccc..
-            .cdccdddddddc555cbc55c..
-            .cdddddddddddcccbbc5c...
-            .cbddddddd55dbbbbccc....
-            .ccbdddddd555dbbbcbc....
-            ..cccddbbbd555bbccc.....
-            ....ccbbbbbd555cc.......
-            ......ccccbddddbc.......
-            ..........cd5555dc......
             `],
         500,
         false
