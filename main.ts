@@ -215,7 +215,7 @@ controller.player2.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Press
     pause(300)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite3, location2) {
-    game.over(false, effects.splatter)
+    game.over(false)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -714,7 +714,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, Godzilla, 50, 16)
+        `, Godzilla, 50, 0)
     pause(300)
 })
 controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
@@ -1107,6 +1107,8 @@ let Coin: Sprite = null
 let projectile: Sprite = null
 let Godzilla: Sprite = null
 let Godzilla_2: Sprite = null
+game.setDialogTextColor(14)
+game.showLongText("This is a game similar to super Mario. Use the arrow keys or W,A,S,D to move. Player 2 is the mushroom. Control player 2 similar to player 1 but using I,J,K,L for movement. you cannot jump on enemies. Player 1 can shoot bullets using Space/A/Enter", DialogLayout.Full)
 What_to_do_on_start()
 animation.runImageAnimation(
 Godzilla_2,
